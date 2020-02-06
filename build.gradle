@@ -27,7 +27,7 @@ ext {
 
 
 group 'com.ua.passlocker'
-version '1.0'
+version '1.1.0'
 
 sourceCompatibility = 1.8
 

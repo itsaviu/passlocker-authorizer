@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.ua.passlocker.authorizer.execptions.AuthorizationException;
+import com.ua.passlocker.authorizer.security.AppContextHolder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -67,6 +68,7 @@ public class JWTAuthorizationFilter implements Filter {
                     Claim sub = jwt.getClaim("emailId");
                     if (StringUtils.isEmpty(sub.asString()))
                         throw new AuthorizationException("Email Id is empty in SUB");
+                    AppContextHolder.setThreadLocal(sub.asString());
                     chain.doFilter(request, response);
                 } catch (JWTVerificationException | AuthorizationException exception) {
                     logger.severe("Exception authentication");
