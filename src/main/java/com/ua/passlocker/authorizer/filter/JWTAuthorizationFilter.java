@@ -85,5 +85,6 @@ public class JWTAuthorizationFilter implements Filter {
 
     @Override
     public void destroy() {
+        AppContextHolder.clearThreadLocal();
     }
 }

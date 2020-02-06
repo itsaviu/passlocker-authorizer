@@ -8,11 +8,11 @@ public class AppContextHolder {
         threadLocal.set(secret);
     }
 
-    private static String getThreadLocal() {
+    public static String getThreadLocal() {
         return threadLocal.get();
     }
 
-    private static void clearThreadLocal() {
+    public static void clearThreadLocal() {
         threadLocal.remove();
     }
 }
